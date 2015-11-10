@@ -1,0 +1,93 @@
+/* 
+
+edilsonj.filho@gmail.com; pjmdasilva@yahoo.com.br;
+
+#include "stdafx.h"
+#include "iostream"
+using namespace std;
+
+23/02/10 - Algoritmo e programacao
+
+1 - implementar um programa em C++ que leia um numero inteiro e informe se este é par ou impar;
+2 - implementar um programa em C++ onde o usuario digita um numero inteiro e o programa informa se é um numero positivo ou negativo (incluir o zero como positivo);
+3 - Implementar um programa em C++ que leia um numero inteiro e informe se este é multiplo de 3 e de 7, caso contrario apenas informar que nao é multiplo;
+4 - implementar um programa em C++ que leia a idade de uma pessoa e informe se esta pessoa pode ou não votar;
+
+01/03/10
+
+5 - O dono de um campo de futebol acaba de contratar um analista de sistemas para construir um pequeno programa onde o usuario digita a hora inicial de um aluguel do campo e a hora final. O programa deverá informar qual o valor a ser pago, a partir de um valor por hora informado pelo dono. Um jogo poderá começar em um dia e terminar no outro, porém não poderá ter mais do que 24hs.
+6 - Na fábrica ABCD Brinquedos o salário líquido de cada funcionário é calculado a partir das seguintes considerações:
+    a) Salário bruto;
+    b) Adicional noturno, se trabalhar a noite, no valor de R$ 300,00;
+    c) Salário família de R$ 90,00 se tiver filhos;
+    d) Auxílio creche de R$ 100,00 para cada filho com idade inferior ou igual a 4 anos;
+    e) Desconto de 17% do INSS para os funcionários que ganham até R$ 1.400,00 e desconto de 21% para os que ganham acima ou igual R$ 1400,00;
+Calcular e exibir o salário líquido.
+
+02/03/10
+
+7 - Fazer um programa que leia a idade de uma pessoa e informe:
+    a) Não votante;
+    b) Voto facultativo;
+    c) Voto obrigatório;
+    
+8 - Implementar um programa que leia 4 números inteiros:
+    Se o último número for negativo calcular e exibir a média dos três primeiros.
+    Se o último número for positivo calcular e exibir a soma dos quadrados dos três primeiros.
+    Se o último número for igual a zero calcular e exibir o produto do primeiro pelo segundo subtraído pelo terceiro.
+
+08/03/10
+
+9 - Implementar um programa onde o usuario digita dois números reais e logo após aparece as seguintes opções:
+    a) Soma;
+    b) Subtração;
+    c) Multiplicação;
+    d) Divisão;
+Após a escolha da opção, o programa deverá exibir resultado ou a mensagem "Opção inválida".
+(switch case)
+
+10 - Em uma industria todos os funcionarios tem suas matriculas compostas por 4 algarismos, onde, o ultimo algarismo indica o setor onde o mesmo trabalha. Fazer um programa em C++ em que o usuario digita uma matricula e o sistema informa o setor de trabalho, caso contrario informar matricula inexistente.
+
+15/03/10
+
+11 - Fazer um programa em C++ onde o usuario digite uma data (dia, mes e ano) e o programa retorne se a data é valida ou não.
+12 - Implementar um programa em C++ que leia um numero inteiro e repita-o 10 vezes na tela.
+13 - Fazer um programa em c++ que exiba todos os numeros inteiros de um ate 20;
+
+16/03/10
+
+14 - Fazer um programa que o usuario digita 10 idades e o programa retorne a media;
+15 - Implementar um programa onde o usuario digita a quantidade de remedios de cada fabricante em uma farmacia. Foram cadastrados 20 fabricantes, calcular e exibir:
+     a) Total de remedios;
+     b) Quantos fabricantes tem menos de 10 remedios na prateleira;
+16 - Em uma cidade do interior o prefeito cadastrou 200 pessoas. Cada pessoa deveria informar:
+     a) Sua idade;
+     b) Quantidade de filhos;
+     c) Salário;
+     
+     Foi implementado um programa em C++ para cadastrar essas pessoas e ao final exibir as seguintes informações:
+         a) Total de pessoas sem filhos;
+         b) Media dos salarios das pessoas a cima de 20 anos;
+         c) Qual o maior salario
+
+17 - Em uma estação metereologica, no mes de julho de 2005, um determinado funcionario cadastrou o dia e a menor temperatura registrada nesse dia, durante todo mês.
+Ao final o sistema deveria exibir o dia da menor e maior temperatura foi registrada;
+
+18 - Fazer um programa em que o usuario digita o valor de A e B e o mesmo calcula o valor de x, conforme a fórmula abaixo:
+     x = A elevado a B
+
+23/03/10
+
+19 - Fazer um programa em que o usuário digita vários números inteiros até que o mesmo digite um valor negativo para terminar a execução. Nesse momento, será exibido quantos números foram digitados. O valor negativo não fará parte.
+20 - Foi feita uma pesquisa em que cada usuário digitava sua idade e seu salario. Após a entrevista individual o sistema perguntava 1 continuar ou 2 sair. Ao sair o mesmo exibia as seguintes informações:
+     a) Quantas pessoas foram entrevistadas;
+     b) Média dos salários das pessoas entre 20 e 45 anos;
+     c) Idade da pessoa mais idosa entrevistada;
+
+22 - Um professor após corrigir algumas provas de seus alunos, resolveu calcular a média geral da turma e quantos alunos obtiveram média menor que 6 (seis). Cada aluno tinha direito a fazer 3 (três) provas para calcular sua média. O sistema terminará quando for digitado uma opção de saída.
+
+23 - No estado da Bahia foi organizado uma corrida de jegue entre os torcedores de um time. Cada corredor, dentre os 50 participantes, participava de 10 etapas desse circuito bahiano implementar um programa em C++ que leia os 10 tempos de cada um dos 50 competidores e exiba ao final a média de tempo do vencedor e do perdedor.
+
+Trabalho 1 ponto
+
+*/
