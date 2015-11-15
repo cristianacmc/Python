@@ -7,9 +7,16 @@ class Perfil(object):
         self.email = email
         self.telefone = telefone
         self.empresa = empresa
+        self.__curtidas = 0
 
     def imprimir(self):
         print ('Nome: %s, Email: %s, Telefone: %s, Empresa: %s' %(self.nome, self.email, self.telefone, self.empresa))
+
+    def curtir(self):
+        self.__curtidas += 1
+
+    def obterCurtidas(self):
+        return self.__curtidas
 
 class Data(object):
     def __init__(self, dia, mes, ano):
@@ -28,8 +35,6 @@ class Pessoa(object):
 
     def calcula_imc(self):
         return self.altura/(self.peso**2)
-        
+
     def imprime_imc(self):
-        print ('Imc de %s: %s' %(self.nome, calcula_imc)
-        
-        
+        print ('Imc de %s: %s' %(self.nome, calcula_imc))
