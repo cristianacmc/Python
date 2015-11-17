@@ -17,3 +17,12 @@ class Perfil(object):
 
     def obterCurtidas(self):
         return self.__curtidas
+
+class PerfilVip(Perfil):
+    def __init__(self, nome, email, telefone, empresa, apelido):
+
+        super(PerfilVip, self).__init__(nome, email, telefone, empresa)
+        self.apelido = apelido
+
+    def obter_creditos(self):
+        return super(PerfilVip, self).obterCurtidas() *10
