@@ -16,20 +16,20 @@ def multstring(s, n):
 # string_splosion('abc') -> 'aababc'
 # string_splosion('ab') -> 'aab'
 def string_splosion(s):
-    word = ''
-    for i in range(len(s)):
-        word += s[:i+1]
-    return word
+    n=''
+    for k in range (len(s)):        
+        n += s[:k]
+    n += s
+    return n
+
+#return ''.join(s[:k] for k in range (len(s)+1))    
 
 
 # C. array_count9
 # conta quantas vezes aparece o 9 numa lista nums
-def array_count9(nums):
-    count = 0
-    for num in nums:
-        if num == 9:
-            count += 1
-    return count
+def array_count9(n):
+    return n.count(9)
+
 
 
 # D. array_front9
@@ -38,26 +38,26 @@ def array_count9(nums):
 # array_front9([1, 2, 3, 4, 9]) -> False
 # array_front9([1, 2, 3, 4, 5]) -> False
 def array_front9(nums):
-    if 9 in nums[:4]:
-        return True
-    return False
+    return 9 in nums[:4]
 
+    
 
 # E. hello_name
 # seja uma string name
 # hello_name('Bob') -> 'Hello Bob!'
 # hello_name('Alice') -> 'Hello Alice!'
 # hello_name('X') -> 'Hello X!'
-def hello_name(name):
-    return 'Hello %s!' % name
+def hello_name(n):
+    return 'Hello %s!' %n
 
 
 # F. make_tags
 # make_tags('i', 'Yay'), '<i>Yay</i>'
 # make_tags('i', 'Hello'), '<i>Hello</i>'
 # make_tags('cite', 'Yay'), '<cite>Yay</cite>'
-def make_tags(tab, word):
-    return '<%s>%s</%s>' % (tab, word, tab)
+def make_tags(t, s):
+    return '<%s>%s</%s>' %(t,s,t)
+
 
 
 # G. extra_end
@@ -67,7 +67,9 @@ def make_tags(tab, word):
 # extra_end('ab'), 'ababab'
 # extra_end('Hi'), 'HiHiHi'
 def extra_end(s):
-    return s[-2:] * 3
+    return 3 * s[-2:]
+    
+
 
 
 # H. first_half
@@ -77,7 +79,9 @@ def extra_end(s):
 # first_half('HelloThere') -> 'Hello'
 # first_half('abcdef') -> 'abc'
 def first_half(s):
-    return s[:len(s) / 2]
+    return s[:len(s)//2]
+    
+
 
 
 # I. sem_pontas
@@ -90,26 +94,27 @@ def sem_pontas(s):
     return s[1:-1]
 
 
+
 # J. roda2
 # rodar uma string s duas posições
 # a string possui pelo menos 2 caracteres
 # left2('Hello') -> 'lloHe'
 # left2('Hi') -> 'Hi'
 def roda2(s):
-    if len(s) <= 2:
-        return s
-    return s[2:] + s[:2]
+    return s[2:]+s[:2]
+
 
 
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(obtido, esperado):
-    if obtido == esperado:
-        prefixo = ' Parabéns!'
-    else:
-        prefixo = ' Ainda não'
-    print ('%s obtido: %s esperado: %s'
-           % (prefixo, repr(obtido), repr(esperado)))
+  if obtido == esperado:
+    prefixo = ' Parabéns!'
+  else:
+    prefixo = ' Ainda não'
+  print ('%s obtido: %s esperado: %s'
+         % (prefixo, repr(obtido), repr(esperado)))
+
 
 
 def main():
