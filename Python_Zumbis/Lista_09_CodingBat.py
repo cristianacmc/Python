@@ -7,10 +7,8 @@
 # first_last6([1, 2, 6]) -> True
 # first_last6([6, 1, 2, 3]) -> True
 # first_last6([3, 2, 1]) -> False
-def first_last6(nums):
-    if nums[0] == 6 or nums[-1] == 6:
-        return True
-    return False
+def first_last6(num):
+    return num[0]==6 or num[-1]==6
 
 
 # B. same_first_last
@@ -20,11 +18,10 @@ def first_last6(nums):
 # same_first_last([1, 2, 3, 1]) -> True
 # same_first_last([1, 2, 1]) -> True
 def same_first_last(nums):
-    if nums:
-        if nums[0] == nums[-1]:
-            return True
-    return False
-
+    return len(nums)>0 and nums[0]==nums[-1]   
+        
+            
+  
 
 # C. common_end
 # Dada duas listas a e b verifica se os dois primeiros são
@@ -34,9 +31,8 @@ def same_first_last(nums):
 # common_end([1, 2, 3], [7, 3, 2]) -> False
 # common_end([1, 2, 3], [1, 3]) -> True
 def common_end(a, b):
-    if a[0] == b[0] or a[0] == b[-1] or a[-1] == b[-1]:
-        return True
-    return False
+    return a[0] == b[0] or a[-1]== b[-1]
+
 
 
 # D. maior_ponta
@@ -45,31 +41,17 @@ def common_end(a, b):
 # obs.: não é o maior de todos, mas entre as duas pontas
 # maior_ponta([1, 2, 3]) -> [3, 3, 3]
 # maior_ponta([1, 3, 2]) -> [2, 2, 2]
-def maior_ponta(nums):
-    maior = 0
-    array = []
-
-    if nums[0] > nums[-1]:
-        maior = nums[0]
-    else:
-        maior = nums[-1]
-
-    for i in nums:
-        array.append(maior)
-    return array
+def maior_ponta(l):
+    return [max(l[0], l[-1])] * len(l)
+    
 
 
 # E. sum2
 # Dada uma lista de inteiros de qualquer tamanho
 # retorna a soma dos dois primeiros elementos
 # se a lista tiver menos de dois elementos, soma o que for possível
-def sum2(nums):
-    if not nums:
-        return 0
-    else:
-        if len(nums) == 1:
-            return nums[0]
-        return nums[0] + nums[1]
+def sum2(l):
+    return sum(l[:2])
 
 
 # F. middle_way
@@ -80,7 +62,9 @@ def sum2(nums):
 # middle_way([7, 7, 7], [3, 8, 0]) -> [7, 8]
 # middle_way([5, 2, 9], [1, 4, 5]) -> [2, 4]
 def middle_way(a, b):
-    return [a[1], b[1]]
+    return [a[len(a)//2], b[len(b)//2]]
+
+
 
 
 # G. date_fashion
@@ -97,13 +81,14 @@ def middle_way(a, b):
 # date_fashion(5, 10) -> 2
 # date_fashion(5, 2) -> 0
 # date_fashion(5, 5) -> 1
-def date_fashion(eu, par):
-    if eu <= 2 or par <= 2:
+def date_fashion(n1, n2):
+    if n1 <= 2 or n2 <= 2:
         return 0
+    if n1 >= 8 or n2 >= 8:
+        return 2
     else:
-        if eu >= 8 or par >= 8:
-            return 2
         return 1
+    
 
 
 # H. squirrel_play
@@ -114,11 +99,8 @@ def date_fashion(eu, par):
 # squirrel_play(70, False) -> True
 # squirrel_play(95, False) -> False
 # squirrel_play(95, True) -> True
-def squirrel_play(temp, is_summer):
-    more = 10 if is_summer else 0
-    if temp >= 60 and temp <= 90 + more:
-        return True
-    return False
+def squirrel_play(t,is_summer):
+    return 60 <= t <=100 if is_summer else  60 <= t <=90
 
 
 # I. pego_correndo
@@ -134,15 +116,16 @@ def squirrel_play(temp, is_summer):
 # pego_correndo(60, False) -> 0
 # pego_correndo(65, False) -> 1
 # pego_correndo(65, True) -> 0
-def pego_correndo(speed, is_birthday):
-    more = 5 if is_birthday else 0
-
-    if speed <= 60 + more:
+def pego_correndo(v, is_birthday):
+    if is_birthday:
+        v -= 5
+    if v <= 60:
         return 0
-    elif speed > 60 + more and speed <= 80 + more:
+    if v <= 80:
         return 1
     else:
-        return 2
+        return 2        
+
 
 
 # J. alarm_clock
@@ -157,28 +140,27 @@ def pego_correndo(speed, is_birthday):
 # alarm_clock(1, False) -> '7:00'
 # alarm_clock(5, False) -> '7:00'
 # alarm_clock(0, False) -> '10:00'
-def alarm_clock(day, vacation):
-    if day == 0 or day == 6:
-        if vacation:
-            return 'off'
-        return '10:00'
+def alarm_clock(d, vacation):
+    if vacation:
+        return 'off' if  d in (0, 6) else '10:00'
     else:
-        if vacation:
-            return '10:00'
-        return '07:00'
+        return '10:00' if d in (0, 6) else '07:00'
 
 
-# Provided simple test() function used in main() to print
+
+
+#Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(obtido, esperado):
-    if obtido == esperado:
-        prefixo = ' Parabéns!'
-    else:
-        prefixo = ' Ainda não'
-    print ('%s obtido: %s esperado: %s'
-           % (prefixo, repr(obtido), repr(esperado)))
-
-
+  if obtido == esperado:
+    prefixo = ' Parabéns!'
+  else:
+    prefixo = ' Ainda não'
+  print ('%s obtido: %s esperado: %s'
+         % (prefixo, repr(obtido), repr(esperado)))    
+        
+    
+        
 def main():
     print ('First_last6')
     test(first_last6([1, 2, 6]), True)
