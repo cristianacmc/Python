@@ -9,11 +9,7 @@
 # near_ten(17) -> False
 # near_ten(19) -> True
 def near_ten(n):
-    dist = n % 10
-
-    if dist <= 2 or dist in [8, 9]:
-        return True
-    return False
+    return n % 10 <= 2 or n % 10 >= 8   
 
 
 # B. lone_sum
@@ -23,16 +19,15 @@ def near_ten(n):
 # lone_sum(3, 2, 3) -> 2
 # lone_sum(3, 3, 3) -> 0
 def lone_sum(a, b, c):
-    if a == b and a == c:
+    if a==b==c:
         return 0
-    elif b == c:
-        return a
-    elif a == c:
-        return b
-    elif a == b:
+    if a==b:
         return c
-    else:
-        return a + b + c
+    if a==c:
+        return b
+    if b==c:
+        return a
+    return a+b+c 
 
 
 # C. luck_sum
@@ -42,14 +37,15 @@ def lone_sum(a, b, c):
 # lucky_sum(1, 2, 13) -> 3
 # lucky_sum(1, 13, 3) -> 1
 def lucky_sum(a, b, c):
-    if a == 13:
+    if a ==13:
         return 0
-    elif b == 13:
+    if b==13:
         return a
-    elif c == 13:
-        return a + b
-    else:
-        return a + b + c
+    if c==13:
+        return a+b
+    return a+b+c   
+
+
 
 
 # D. double_char
@@ -58,13 +54,8 @@ def lucky_sum(a, b, c):
 # double_char('AAbb') -> 'AAAAbbbb'
 # double_char('Hi-There') -> 'HHii--TThheerree'
 def double_char(s):
-    list_str = list(s)
-    string = ''
+    return ''.join([c+c for c in s])
 
-    for chr in list_str:
-        string += chr * 2
-
-    return string
 
 
 # E. count_hi
@@ -82,8 +73,7 @@ def count_hi(s):
 # cat_dog('catcat') -> False
 # cat_dog('1cat1cadodog') -> True
 def cat_dog(s):
-    return s.count('cat') == s.count('dog')
-
+    return s.count('cat')== s.count('dog')
 
 # G. count_code
 # conta quantas vezes aparece 'code'
@@ -93,11 +83,12 @@ def cat_dog(s):
 # count_code('codexxcode') -> 2
 # count_code('cozexxcope') -> 2
 def count_code(s):
-    import string
-    sum = 0
-    for chr in string.ascii_lowercase:
-        sum += s.count('co' + chr + 'e')
-    return sum
+    count = 0
+    for k in range (len(s)-3):
+        if s[k:k+2]=='co' and s[k+3]=='e':
+            count += 1
+    return count
+
 
 
 # H. end_other
@@ -110,10 +101,8 @@ def count_code(s):
 def end_other(a, b):
     a = a.lower()
     b = b.lower()
+    return a.endswith(b) or b.endswith(a)
 
-    if len(a) > len(b):
-        return a.endswith(b)
-    return b.endswith(a)
 
 
 # I. count_evens
@@ -121,12 +110,9 @@ def end_other(a, b):
 # count_evens([2, 1, 2, 3, 4]) -> 3
 # count_evens([2, 2, 0]) -> 3
 # count_evens([1, 3, 5]) -> 0
-def count_evens(nums):
-    count = 0
-    for num in nums:
-        if num % 2 == 0:
-            count += 1
-    return count
+def count_evens(l):
+    return len([x for x in l if x%2==0])
+
 
 
 # J. sum13
@@ -136,19 +122,11 @@ def count_evens(nums):
 # sum13([1, 1]) -> 2
 # sum13([1, 2, 2, 1, 13]) -> 6
 # sum13([13, 1, 2, 3, 4]) -> 0
-def sum13(nums):
-    lista = nums
-
-    if 13 in nums:
-        index = nums.index(13)
-        lista = nums[:index]
-
-    if lista:
-        sum = 0
-        for i in lista:
-            sum += i
-        return sum
-    return 0
+def sum13(l):
+    if 13 in l:
+        return sum(l[:l.index(13)])
+    return sum(l)
+            
 
 
 # K. has22
@@ -156,18 +134,9 @@ def sum13(nums):
 # has22([1, 2, 2]) -> True
 # has22([1, 2, 1, 2]) -> False
 # has22([2, 1, 2]) -> False
-def has22(nums):
-    lista = []
-    coluna = 0
-    for i in nums:
-        lista.append(i)
-    while True:
-        try:
-            if nums[coluna] == lista[coluna+1]:
-                return True
-        except IndexError:
-            return False
-        coluna += 1
+def has22(l):
+    return '2, 2' in str(l)
+
 
 
 # L. soma_na_lista
@@ -178,8 +147,10 @@ def has22(nums):
 # soma_na_lista(8, [1, 2, 3, 4]) -> False
 # soma_na_lista(4, [2, 2, 2, 2]) -> False
 # soma_na_lista(4, [2, 2, 1, 3]) -> True
-def soma_na_lista(n, lista):
-    return n in [x + y for x in lista for y in lista if x != y]
+def soma_na_lista(n, l):
+    return n in [x + y for x in l for y in l if x != y]      
+    
+
 
 
 # M.Difícil: Fila de tijolos sem usar loops
@@ -190,26 +161,8 @@ def soma_na_lista(n, lista):
 # fila_tijolos(3, 1, 8) -> True
 # fila_tijolos(3, 1, 9) -> False
 # fila_tijolos(3, 2, 10) -> True
-def fila_tijolos(n_peq, n_gra, meta):
-    meta_total = 0
-    total_pequenos = n_peq
-    total_grandes = n_gra
-    resto_cincos = meta % 5    
-    cincos_parametro = (meta - resto_cincos) / 5
-    if(cincos_parametro > total_grandes):
-        mediador = cincos_parametro - total_grandes
-        total_grandes = 0           
-        meta_total = meta_total + (mediador * 5) + resto_cincos 
-    else:
-        total_grandes = total_grandes - cincos_parametro 
-        meta_total = resto_cincos
-        if(meta_total == 0):
-            return True
-    total_pequenos = total_pequenos - meta_total
-    if(total_pequenos >= 0):           
-        return True
-    else:
-        return False
+def fila_tijolos(n_peq, n_grd, meta):
+    return n_peq >= meta % 5 and n_peq + 5 * n_gra >= meta
 
 
 # Provided simple test() function used in main() to print
