@@ -27,14 +27,13 @@ def verbing(s):
 # Se 'bad' aparece depois de 'not' troca 'not' ... 'bad' por 'good'
 # Assim 'This dinner is not that bad!' retorna 'This dinner is good!'
 def not_bad(s):
-    bad_str = s.find('bad')
-    not_str = s.find('not')
-
-    if bad_str > not_str:
-        extract = s[not_str:bad_str+3]
-        return s.replace(extract, 'good')
-    else:
-        return s
+    n = s.find('not')
+    b = s.find('bad')
+    if b > n:
+        s = s[:n] + 'good' + s[b+3:]
+    return s
+    
+        
 
 
 # I. inicio_final
@@ -45,21 +44,14 @@ def not_bad(s):
 # Dadas 2 strings, a e b, retorna a string
 #  a-inicio + b-inicio + a-final + b-final
 def inicio_final(a, b):
-    if len(a) % 2 == 0:
-        inicio_a = a[:len(a)/2]
-        final_a = a[len(a)/2:]
-    else:
-        inicio_a = a[:len(a)/2+1]
-        final_a = a[len(a)/2+1:]
-
-    if len(b) % 2 == 0:
-        inicio_b = b[:len(b)/2]
-        final_b = b[len(b)/2:]
-    else:
-        inicio_b = b[:len(b)/2+1]
-        final_b = b[len(b)/2+1:]
-
-    return inicio_a + inicio_b + final_a + final_b
+    a_midle = len(a)//2
+    b_midle = len(b)//2
+    if len(a)% 2 ==1:
+        a_midle += 1
+    if len(b)%2 == 1:
+        b_midle += 1
+    return a[:a_midle]+b[:b_midle]+ a[a_midle:]+b[b_midle:]
+    
 
 
 # J. zeros finais
@@ -67,19 +59,19 @@ def inicio_final(a, b):
 # Exemplo: 10010 tem 1 zero no fim e 908007000 possui três
 def zf(n):
     n = str(n)[::-1]
-    sum = 0
-    i = 0
-    while '0' == n[i]:
-        sum += 1
-        i += 1
-    return sum
-
-
+    k = 0
+    while n[k]=='0':
+        k += 1
+    return k
+            
 # K. conta 2
 # Verifique quantas vezes o dígito 2 aparece entre 0 e n-1
 # Exemplo: para n = 20 o dígito 2 aparece duas vezes entre 0 e 19
 def conta2(n):
-    return
+    s=''
+    for k in range(n):
+        s += str(k)
+    return s.count('2')
 
 
 # L. inicio em potencia de 2
@@ -87,7 +79,12 @@ def conta2(n):
 # que tenha o início igual a n
 # Exemplo: para n = 65 retornará 16 pois 2**16 = 65536
 def inip2(n):
-    return
+    k = 0
+    while True:
+        pot = str(2**k)
+        if pot.startswith(str(n)):
+            return k
+        k += 1
 
 
 def test(obtido, esperado):
@@ -105,7 +102,7 @@ def main():
     test(verbing('swiming'), 'swimingly')
     test(verbing('do'), 'do')
 
-    # print ()
+    print()
     print ('not_bad')
     test(not_bad('This movie is not so bad'), 'This movie is good')
     test(not_bad('This dinner is not that bad!'), 'This dinner is good!')
@@ -122,6 +119,13 @@ def main():
     print ('zeros finais')
     test(zf(10100100010000), 4)
     test(zf(90000000000000000010), 1)
+
+
+    print ()
+    print ('conta 2')
+    test(conta2(20), 2)
+    test(conta2(999), 300)
+    test(conta2(555), 216)    
 
     # print ()
     # print ('conta 2')
